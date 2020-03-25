@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace UniTekk.Models
+namespace UniTekk.Models.Products
 {
     public class Camera : Product
     {
@@ -38,13 +38,13 @@ namespace UniTekk.Models
         /// Field constructor.
         /// </summary>
         /// <param name="cameraName">Name of camera.</param>
-        /// <param name="productId">Product ID of camera.</param>
+        /// <param name="cameraId">Product ID of camera.</param>
         /// <param name="brand">Brand of camera.</param>
         /// <param name="price">Price of camera.</param>
         /// <param name="availability">Stock of specific camera.</param>
         /// <param name="aperture">Aperture of camera.</param>
         /// <param name="shutterSpeed">Shutter speed of camera.</param>
-        public Camera(string cameraName, int productId, Brand brand, double price, int availability, int aperture, int shutterSpeed) : base(cameraName, productId, brand, price, availability)
+        public Camera(string cameraName, int cameraId, Brand brand, double price, int availability, int aperture, int shutterSpeed) : base(cameraName, cameraId, brand, price, availability)
         {
             Aperture = aperture;
             ShutterSpeed = shutterSpeed;
