@@ -28,6 +28,16 @@ namespace UniTekk.Models
         {
             get; set;
         }
+
+        public double Price
+        {
+            get; set;
+        }
+
+        public int Availability
+        {
+            get; set;
+        }
         #endregion
 
         #region Constructors
@@ -45,18 +55,22 @@ namespace UniTekk.Models
         /// <param name="name">Name of product.</param>
         /// <param name="productid">ID of product.</param>
         /// <param name="productBrand">Brand of product.</param>
-        public Product(string name, int productid, Brand productBrand)
+        /// <param name="price">Price of product.</param>
+        /// <param name="availability">Stock of product.</param>
+        public Product(string name, int productid, Brand productBrand, double price, int availability)
         {
             Name = name;
             ProductID = productid;
             ProductBrand = productBrand;
+            Price = price;
+            Availability = availability;
         }
 
         /// <summary>
         /// Copy constructor.
         /// </summary>
         /// <param name="instance">Instance of product that is being copied.</param>
-        public Product(Product instance) : this(instance.Name, instance.ProductID, instance.ProductBrand)
+        public Product(Product instance) : this(instance.Name, instance.ProductID, instance.ProductBrand, instance.Price, instance.Availability)
         {
 
         }
