@@ -130,6 +130,7 @@
     <Compile Include="Models\Products\Phone.cs" />
     <Compile Include="Models\Products\Product.cs" />
     <Compile Include="Models\Products\TV.cs" />
+    <Compile Include="Models\Seller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
