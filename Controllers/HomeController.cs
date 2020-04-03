@@ -26,5 +26,27 @@ namespace UniTekk.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        [Route("GetLogin")]
+        public ActionResult<IEnumerable<string>> GetValues()
+        {
+            DataBaseModel db = new DataBaseModel();
+            int returnVal = db.returnLoginInfo("username","password",1);
+            return new string[] {returnVal.ToString()};
+        }
+
+        [HttpPost]
+        [Route("PostCriteria")]
+        public int postCriteria([FromBody] JObject emp)
+        {
+            string clientUsername = (int)emp["clientUsername"];
+            string address = (string)emp["Address"];
+            int price = (int)emp["price"];
+            DataBaseModel db = new DataBaseModel();
+            int returnVal = db.insertCriteriaInfo(clientUsername, address, price);
+            return new string[] { returnVal.toString()};
+
+        }
     }
 }

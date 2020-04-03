@@ -246,6 +246,18 @@ namespace ProjectTemp.Helpers
             return returnVal;
         }
 
+        public int insertCriteriaInfo(string username, string address, int price)
+        {
+            int verifier = 0;
+            SqlParameter[] Parameters = new SqlParameter[3];
+            Parameters[0] = new SqlParameter("@successVal", verifier);
+            Parameters[1] = new SqlParameter("@clientUsername", username);
+            Parameters[2] = new SqlParameter("@price", price);
+            Parameters[3] = new SqlParameter("@address", address);
+            int returnVal = Execute_Non_Query_Store_Procedure("sendCriteria", Parameters, verifier);
+            return returnVal;
+        }
+
         #endregion
     }
 }
