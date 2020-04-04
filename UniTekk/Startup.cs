@@ -14,6 +14,7 @@ namespace UniTekk
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -47,17 +48,17 @@ namespace UniTekk
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
+           // app.UseStaticFiles();
+           // app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
+            app.UseMvc(/*routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            }*/);
         }
     }
 }

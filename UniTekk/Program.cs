@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Nancy.Json;
+using UniTekk.Models.Products;
 
 namespace UniTekk
 {
@@ -14,6 +16,13 @@ namespace UniTekk
     {
         public static void Main(string[] args)
         {
+            //Was testing out Nancy.Json
+            /*
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            Brand nike = new Brand("Nike", 1);
+            Camera type1 = new Camera("test", 2, nike, 1.00, 50, 500, 500);
+            Console.WriteLine(serializer.Serialize(type1));
+            */
             CreateWebHostBuilder(args).Build().Run();
         }
 

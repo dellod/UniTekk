@@ -59,5 +59,6 @@ namespace UniTekk.Models.Products
 
         }
         #endregion
+
     }
 }
