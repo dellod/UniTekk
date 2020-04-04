@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTekk", "UniTekk.csproj", "{077B5E52-44B6-460E-B379-96CFFC9737D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTekk", "UniTekk\UniTekk.csproj", "{4F1BC7C7-5914-4F94-ABC5-961A600DDD2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{077B5E52-44B6-460E-B379-96CFFC9737D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{077B5E52-44B6-460E-B379-96CFFC9737D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{077B5E52-44B6-460E-B379-96CFFC9737D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{077B5E52-44B6-460E-B379-96CFFC9737D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1BC7C7-5914-4F94-ABC5-961A600DDD2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1BC7C7-5914-4F94-ABC5-961A600DDD2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1BC7C7-5914-4F94-ABC5-961A600DDD2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1BC7C7-5914-4F94-ABC5-961A600DDD2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {08E17A10-CAE4-4F42-ACCF-B2FA6BFB75DE}
+		SolutionGuid = {E03B33C4-D3CD-4DEA-9068-3E00976906FA}
 	EndGlobalSection
 EndGlobal
