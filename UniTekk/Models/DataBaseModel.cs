@@ -21,20 +21,11 @@ namespace UniTekk.Models
             return new SqlConnection(connectionstring);
         }
 
-        public string Get_PuBConnectionString()
-        {
-            try
-            {
-                return "Add your connection String";
-            }
-            catch { return null; }
-        }
-
         public SqlConnection GetSQLConnection()
         {
-            if (Get_PuBConnectionString() == null)
+            if (databaseCredentials.Get_PuBConnectionString() == null)
                 return null;
-            return new SqlConnection(Get_PuBConnectionString());
+            return new SqlConnection(databaseCredentials.Get_PuBConnectionString());
         }
 
         /// <summary>

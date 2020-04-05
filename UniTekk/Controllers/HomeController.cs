@@ -49,22 +49,20 @@ namespace UniTekk.Controllers
         public ActionResult<IEnumerable<string>> GetValues()
         {
             UniTekk.Models.DatabaseModel db = new DatabaseModel();
-            int returnVal = db.returnLoginInfo("username", "password", 1.ToString());
+            int returnVal = db.returnLoginInfo("hello", "world", "1234 Hello World Street");
             return new string[] { returnVal.ToString() };
         }
 
         [HttpPost]
         [Route("PostCriteria")]
-        public void postCriteria([FromBody] JObject emp)
+        public string[] postCriteria([FromBody] JObject emp)
         {
             string clientUsername = (string)emp["clientUsername"];
             string address = (string)emp["Address"];
             int price = (int)emp["price"];
             DatabaseModel db = new DatabaseModel();
             int returnVal = db.insertCriteriaInfo(clientUsername, address, price);
-            
-            
-            //return new string[] { returnVal.ToString() };
+            return new string[] { returnVal.ToString() };
 
         }
     }
