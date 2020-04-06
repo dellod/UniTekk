@@ -7,12 +7,12 @@ AS
 
 BEGIN
 	SET NOCOUNT OFF;
-	IF EXISTS (SELECT * FROM Client WHERE Client.username = 'hello' and Client.password = 'world')
+	IF EXISTS (SELECT * FROM Client WHERE Client.username = @username and Client.[password] = @password)
 	BEGIN
 		--INSERT INTO Client (username, password, address) VALUES ('test3', 'test3', 'test3');
 		SET @returnVal = 2;
 	END
-	ELSE IF EXISTS (SELECT * FROM [Admin] WHERE [Admin].username = 'MrMonopoly' and [Admin].password = 'money')
+	ELSE IF EXISTS (SELECT * FROM [Admin] WHERE [Admin].username = @username and [Admin].[password] = @password)
 	BEGIN
 		SET @returnVal = 1;
 	END

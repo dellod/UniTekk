@@ -46,10 +46,10 @@ namespace UniTekk.Controllers
 
         [HttpGet]
         [Route("GetLogin")]
-        public ActionResult<IEnumerable<string>> GetValues()
+        public ActionResult<IEnumerable<string>> GetValues([FromQuery] string username, [FromQuery] string password)
         {
             UniTekk.Models.DatabaseModel db = new DatabaseModel();
-            int returnVal = db.returnLoginInfo("hello", "world", "returnVal");
+            int returnVal = db.returnLoginInfo(username, password, "returnVal");
             return new string[] { returnVal.ToString() };
         }
 
