@@ -55,13 +55,10 @@ namespace UniTekk.Controllers
 
         [HttpPost]
         [Route("PostCriteria")]
-        public string[] postCriteria([FromBody] JObject emp)
+        public string[] postCriteria([FromQuery] string clientUsername, [FromQuery] string price, [FromQuery] string address)
         {
-            string clientUsername = (string)emp["clientUsername"];
-            string address = (string)emp["Address"];
-            int price = (int)emp["price"];
             DatabaseModel db = new DatabaseModel();
-            int returnVal = db.insertCriteriaInfo(clientUsername, address, price);
+            int returnVal = db.insertCriteriaInfo(clientUsername, address, Int32.Parse(price));
             return new string[] { returnVal.ToString() };
         }
     }
