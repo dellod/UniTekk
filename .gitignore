@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/UniTekk/SQLQueries/471_Creation_Query.sql
