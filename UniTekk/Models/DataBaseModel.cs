@@ -39,14 +39,19 @@ namespace UniTekk.Models
             if (GetSQLConnection() == null)
                 return -2;
 
-            int successfulQuery = -2;
+            int successfulQuery = -3;
             SqlCommand sqlCommand = new SqlCommand(procedureName, GetSQLConnection());
             sqlCommand.CommandType = CommandType.StoredProcedure;
 
             try
             {
                 sqlCommand.Parameters.AddRange(parameters);
+                sqlCommand.Parameters["@" + returnValue].Direction = ParameterDirection.Output;
                 sqlCommand.Connection.Open();
+
+                //SqlParameter returnParameter = sqlCommand.Parameters.Add("@" + returnValue, SqlDbType.Int);
+                //returnParameter.Direction = ParameterDirection.ReturnValue;
+
                 successfulQuery = sqlCommand.ExecuteNonQuery();
                 successfulQuery = (int)sqlCommand.Parameters["@" + returnValue].Value;
 
@@ -230,9 +235,10 @@ namespace UniTekk.Models
         public int returnLoginInfo(string username, string password, string verifier)
         {
             SqlParameter[] Parameters = new SqlParameter[3];
-            Parameters[0] = new SqlParameter("@returnVal", verifier);
+            Parameters[0] = new SqlParameter("@returnVal", 1234);
             Parameters[1] = new SqlParameter("@username", username);
             Parameters[2] = new SqlParameter("@password", password);
+
             int returnVal = Execute_Non_Query_Store_Procedure("getUserInformation", Parameters, verifier);
             return returnVal;
         }
