@@ -2,7 +2,7 @@
 -- 1) The statement below will create the Database named Unitekk,
 --    highlight the following statement below and execute or press F5
 
-CREATE DATABASE Unitekk;
+CREATE DATABASE UniTekk;
 
 
 -- 2) Switch your branch from master to Unitekk (It should be the drop-down menu to the left to the execute button) 

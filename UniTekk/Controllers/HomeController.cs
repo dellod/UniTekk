@@ -49,7 +49,7 @@ namespace UniTekk.Controllers
         public ActionResult<IEnumerable<string>> GetValues()
         {
             UniTekk.Models.DatabaseModel db = new DatabaseModel();
-            int returnVal = db.returnLoginInfo("hello", "world", "1234 Hello World Street");
+            int returnVal = db.returnLoginInfo("hello", "world", 10.ToString());
             return new string[] { returnVal.ToString() };
         }
 
@@ -63,7 +63,6 @@ namespace UniTekk.Controllers
             DatabaseModel db = new DatabaseModel();
             int returnVal = db.insertCriteriaInfo(clientUsername, address, price);
             return new string[] { returnVal.ToString() };
-
         }
     }
 }

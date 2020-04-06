@@ -10,7 +10,7 @@ namespace UniTekk.Models
         {
             try
             {
-                return @"Data Source=.;Initial Catalog=UniTekkDatabase;Integrated Security=True;Pooling=False";
+                return @"Data Source=.;Initial Catalog=UniTekk;Integrated Security=True";
             }
             catch { return null; }
         }

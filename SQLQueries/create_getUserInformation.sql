@@ -6,14 +6,20 @@ create procedure getUserInformation(
 AS
 
 BEGIN
-
-	
-	SELECT @returnVal=
-	CASE 
-	WHEN @username = a.username and @password = a.[password] THEN 1 --returns 1 if an admin
-	WHEN @username = c.username and @password = c.[password] THEN 2 -- returns 2 if an client
-	ELSE 0 --return 0 when verfication failed
+	SET NOCOUNT OFF;
+	DECLARE @returnValue as int;
+	SET @returnValue = 0;
+	IF EXISTS (SELECT * FROM Client WHERE Client.username = 'hello' and Client.password = 'world')
+	BEGIN
+		SET @returnValue = 2;
 	END
-	from Admin as a, Client as c
-	RETURN @returnVal
+	ELSE IF EXISTS (SELECT * FROM [Admin] WHERE [Admin].username = 'MrMonopoly' and [Admin].password = 'money')
+	BEGIN
+		SET @returnValue = 1;
+	END
+	ELSE
+	BEGIN
+		SET @returnValue = 0;
+	END;
+	RETURN @returnValue;
 END;
