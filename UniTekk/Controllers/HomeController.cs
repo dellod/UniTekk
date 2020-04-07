@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UniTekk.Models;
 using Newtonsoft.Json.Linq;
+using UniTekk.Models.Products;
 
 namespace UniTekk.Controllers
 {
@@ -59,6 +60,21 @@ namespace UniTekk.Controllers
         {
             DatabaseModel db = new DatabaseModel();
             int returnVal = db.insertCriteriaInfo(clientUsername, address, Int32.Parse(price));
+            return new string[] { returnVal.ToString() };
+        }
+
+
+        [HttpPost]
+        [Route("InsertPost")]
+        public string[] insertPost([FromQuery] string username, [FromQuery] string sellerName , [FromQuery] string link, 
+                                   [FromQuery] int availability , [FromQuery] int price, [FromQuery] string productName,
+                                   [FromQuery] string type, [FromQuery] string attr1, [FromQuery] string attr2, 
+                                   [FromQuery] string attr3, [FromQuery] string attr4, [FromQuery] string attr5)
+        {
+            DatabaseModel db = new DatabaseModel();
+            Brand brand = new Brand(sellerName, link);
+            Product pro = new Product(productName,price,availability,username,brand);
+            int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
             return new string[] { returnVal.ToString() };
         }
     }

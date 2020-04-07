@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UniTekk.Models.Products
 {
-    public class Phone : Product
+    public class Phone
     {
         #region Properties
         /// <summary>
@@ -46,15 +46,15 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="phoneName">Name of phone.</param>
-        /// <param name="productId">Product ID of phone.</param>
-        /// <param name="brand">Brand of phone.</param>
-        /// <param name="price">Price of phone.</param>
-        /// <param name="availability">Stock of specific phone.</param>
-        /// <param name="thick">Thickness of phone.</param>
-        /// <param name="width">Width of phone.</param>
-        /// <param name="height">Height of phone.</param>
-        public Phone(string phoneName, int productId, Brand brand, double price, int availability, double thick, double width, double height) : base(phoneName, productId, brand, price, availability)
+        /// <param Name="phoneName">Name of phone.</param>
+        /// <param Name="productId">Product ID of phone.</param>
+        /// <param Name="brand">Brand of phone.</param>
+        /// <param Name="price">Price of phone.</param>
+        /// <param Name="availability">Stock of specific phone.</param>
+        /// <param Name="thick">Thickness of phone.</param>
+        /// <param Name="width">Width of phone.</param>
+        /// <param Name="height">Height of phone.</param>
+        public Phone(double thick, double width, double height)
         {
             Thickness = thick;
             Width = width;
@@ -64,8 +64,8 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of phone that is being copied.</param>
-        public Phone(Phone instance) : this(instance.Name, instance.ProductID, instance.ProductBrand, instance.Price, instance.Availability, instance.Thickness, instance.Width, instance.Height)
+        /// <param Name="instance">Instance of phone that is being copied.</param>
+        public Phone(Phone instance) : this( instance.Thickness, instance.Width, instance.Height)
         {
 
         }

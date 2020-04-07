@@ -54,10 +54,10 @@ namespace UniTekk.Models
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="name">Name of seller.</param>
-        /// <param name="link">TODO</param>
-        /// <param name="sellerId">Unique of ID of seller.</param>
-        /// <param name="products">Products that the seller owns.</param>
+        /// <param Name="name">Name of seller.</param>
+        /// <param Name="link">TODO</param>
+        /// <param Name="sellerId">Unique of ID of seller.</param>
+        /// <param Name="products">Products that the seller owns.</param>
         public Seller(string name, string link, int sellerId, List<Product> products)
         {
             Name = name;
@@ -69,7 +69,7 @@ namespace UniTekk.Models
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of seller that is being copied.</param>
+        /// <param Name="instance">Instance of seller that is being copied.</param>
         public Seller(Seller instance) : this(instance.Name, instance.Link, instance.SellerId, instance.Products)
         {
 

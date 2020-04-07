@@ -5,7 +5,8 @@ using System.Web;
 
 namespace UniTekk.Models.Products
 {
-    public class Laptop : Product
+    public class Laptop
+
     {
         #region Properties
         /// <summary>
@@ -61,17 +62,17 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="laptopName">Name of laptop.</param>
-        /// <param name="laptopId">Product ID of laptop.</param>
-        /// <param name="brand">Brand of laptop.</param>
-        /// <param name="price">Price of laptop.</param>
-        /// <param name="availability">Stock of specific laptop.</param>
-        /// <param name="ram">RAM of laptop.</param>
-        /// <param name="clock">Clock frequency of laptop.</param>
-        /// <param name="thick">Thickness of laptop.</param>
-        /// <param name="width">Width of laptop.</param>
-        /// <param name="height">Height of laptop.</param>
-        public Laptop(string laptopName, int laptopId, Brand brand, double price, int availability, int ram, int clock, double thick, double width, double height) : base(laptopName, laptopId, brand, price, availability)
+        /// <param Name="laptopName">Name of laptop.</param>
+        /// <param Name="laptopId">Product ID of laptop.</param>
+        /// <param Name="brand">Brand of laptop.</param>
+        /// <param Name="price">Price of laptop.</param>
+        /// <param Name="availability">Stock of specific laptop.</param>
+        /// <param Name="ram">RAM of laptop.</param>
+        /// <param Name="clock">Clock frequency of laptop.</param>
+        /// <param Name="thick">Thickness of laptop.</param>
+        /// <param Name="width">Width of laptop.</param>
+        /// <param Name="height">Height of laptop.</param>
+        public Laptop( int ram, int clock, double thick, double width, double height)
         {
             RAM = ram;
             ClockFrequency = clock;
@@ -83,8 +84,8 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of laptop that is being copied.</param>
-        public Laptop(Laptop instance) : this(instance.Name, instance.ProductID, instance.ProductBrand, instance.Price, instance.Availability, instance.RAM, instance.ClockFrequency, instance.Thickness, instance.Width, instance.Height)
+        /// <param Name="instance">Instance of laptop that is being copied.</param>
+        public Laptop(Laptop instance) : this( instance.RAM, instance.ClockFrequency, instance.Thickness, instance.Width, instance.Height)
         {
 
         }

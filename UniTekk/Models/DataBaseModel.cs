@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Web;
+using UniTekk.Models.Products;
 
 namespace UniTekk.Models
 {
@@ -196,12 +197,12 @@ namespace UniTekk.Models
 
 
             SqlParameter[] Parameters = new SqlParameter[4]; // Specifc number of parametrs for this tored procedure. 
-            Parameters[0] = new SqlParameter("@empName", empName);//Make sure parameters name matches thenames given in your stored procedure
+            Parameters[0] = new SqlParameter("@empName", empName);//Make sure parameters Name matches thenames given in your stored procedure
             Parameters[1] = new SqlParameter("@embBDate", embBDate);
             Parameters[2] = new SqlParameter("@empAddress", empAddress);
             Parameters[3] = new SqlParameter("@empId", empId);
 
-            return Execute_Non_Query_Store_Procedure("SP_UpdateEmpInfo", Parameters);//Make sure procedure name matches the name given in your RDBMS
+            return Execute_Non_Query_Store_Procedure("SP_UpdateEmpInfo", Parameters);//Make sure procedure Name matches the Name given in your RDBMS
         }
 
 
@@ -252,6 +253,68 @@ namespace UniTekk.Models
             Parameters[2] = new SqlParameter("@price", price);
             Parameters[3] = new SqlParameter("@address", address);
             int returnVal = Execute_Non_Query_Store_Procedure("sendCriteria", Parameters, "successValue");
+            return returnVal;
+        }
+
+        public int insertProductInfo(Product pro, String type, String a1,String a2, String a3,String a4,String a5)
+        {
+            int returnVal = 0;
+            if(type.Equals("Laptop") || type.Equals("Camera"))
+            {
+                SqlParameter[] Parameters = new SqlParameter[13];
+                Parameters[0] = new SqlParameter("@returnVal", returnVal);
+                Parameters[1] = new SqlParameter("@username", pro.username);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[4] = new SqlParameter("@availability", pro.availability);
+                Parameters[5] = new SqlParameter("@price", pro.price);
+                Parameters[6] = new SqlParameter("@productName", pro.Name);
+                Parameters[7] = new SqlParameter("@type", type);
+                Parameters[8] = new SqlParameter("@attr1", a1);
+                Parameters[9] = new SqlParameter("@attr2", a2);
+                Parameters[10] = new SqlParameter("@attr3", a3);
+                Parameters[11] = new SqlParameter("@attr4", a4);
+                Parameters[12] = new SqlParameter("@attr5", a5);
+                returnVal = Execute_Non_Query_Store_Procedure("insertNewProduct", Parameters, "returnVal");
+            }
+            else if (type.Equals("Phone"))
+            {
+                SqlParameter[] Parameters = new SqlParameter[13];
+                Parameters[0] = new SqlParameter("@returnVal", returnVal);
+                Parameters[1] = new SqlParameter("@username", pro.username);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[4] = new SqlParameter("@availability", pro.availability);
+                Parameters[5] = new SqlParameter("@price", pro.price);
+                Parameters[6] = new SqlParameter("@productName", pro.Name);
+                Parameters[7] = new SqlParameter("@type", type);
+                Parameters[8] = new SqlParameter("@attr1", a1);
+                Parameters[9] = new SqlParameter("@attr2", a2);
+                Parameters[10] = new SqlParameter("@attr3", a3);
+                Parameters[11] = new SqlParameter("@attr4", "");
+                Parameters[12] = new SqlParameter("@attr5", "");
+                returnVal = Execute_Non_Query_Store_Procedure("insertNewProduct", Parameters, "returnVal");
+            }
+            else if (type.Equals("TV"))
+            {
+                SqlParameter[] Parameters = new SqlParameter[13];
+                Parameters[0] = new SqlParameter("@returnVal", returnVal);
+                Parameters[1] = new SqlParameter("@username", pro.username);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[4] = new SqlParameter("@availability", pro.availability);
+                Parameters[5] = new SqlParameter("@price", pro.price);
+                Parameters[6] = new SqlParameter("@productName", pro.Name);
+                Parameters[7] = new SqlParameter("@type", type);
+                Parameters[8] = new SqlParameter("@attr1", a1);
+                Parameters[9] = new SqlParameter("@attr2", a2);
+                Parameters[10] = new SqlParameter("@attr3", a3);
+                Parameters[11] = new SqlParameter("@attr4", a4);
+                Parameters[12] = new SqlParameter("@attr5", "");
+                returnVal = Execute_Non_Query_Store_Procedure("insertNewProduct", Parameters, "returnVal");
+            }
+
+
             return returnVal;
         }
 

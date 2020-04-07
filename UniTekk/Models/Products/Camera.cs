@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UniTekk.Models.Products
 {
-    public class Camera : Product
+    public class Camera
     {
         #region Properties
         /// <summary>
@@ -37,14 +37,14 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="cameraName">Name of camera.</param>
-        /// <param name="cameraId">Product ID of camera.</param>
-        /// <param name="brand">Brand of camera.</param>
-        /// <param name="price">Price of camera.</param>
-        /// <param name="availability">Stock of specific camera.</param>
-        /// <param name="aperture">Aperture of camera.</param>
-        /// <param name="shutterSpeed">Shutter speed of camera.</param>
-        public Camera(string cameraName, int cameraId, Brand brand, double price, int availability, int aperture, int shutterSpeed) : base(cameraName, cameraId, brand, price, availability)
+        /// <param Name="cameraName">Name of camera.</param>
+        /// <param Name="cameraId">Product ID of camera.</param>
+        /// <param Name="brand">Brand of camera.</param>
+        /// <param Name="price">Price of camera.</param>
+        /// <param Name="availability">Stock of specific camera.</param>
+        /// <param Name="aperture">Aperture of camera.</param>
+        /// <param Name="shutterSpeed">Shutter speed of camera.</param>
+        public Camera(int aperture, int shutterSpeed) 
         {
             Aperture = aperture;
             ShutterSpeed = shutterSpeed;
@@ -53,8 +53,8 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of camera that is being copied.</param>
-        public Camera(Camera instance) : this(instance.Name, instance.ProductID, instance.ProductBrand, instance.Price, instance.Availability, instance.Aperture, instance.ShutterSpeed)
+        /// <param Name="instance">Instance of camera that is being copied.</param>
+        public Camera(Camera instance) : this( instance.Aperture, instance.ShutterSpeed)
         {
 
         }

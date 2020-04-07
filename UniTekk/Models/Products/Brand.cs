@@ -11,15 +11,14 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Name of the brand.
         /// </summary>
-        public string Name
+        public string name
         {
             get; set;
         }
         
-        /// <summary>
-        /// Unique brand ID.
-        /// </summary>
-        public int BrandID
+
+
+        public string link
         {
             get; set;
         }
@@ -37,19 +36,19 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="name">Name of brand.</param>
-        /// <param name="brandid">ID of brand.</param>
-        public Brand(string name, int brandid)
+        /// <param Name="name">Name of brand.</param>
+        /// <param Name="brandid">ID of brand.</param>
+        public Brand(string name, string lin)
         {
-            Name = name;
-            BrandID = brandid;
+            this.name = name;
+            this.link = lin;
         }
 
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of brand that is being copied.</param>
-        public Brand(Brand instance) : this(instance.Name, instance.BrandID)
+        /// <param Name="instance">Instance of brand that is being copied.</param>
+        public Brand(Brand instance) : this(instance.name, instance.link)
         {
 
         }

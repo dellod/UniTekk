@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UniTekk.Models.Products
 {
-    public class TV : Product
+    public class TV 
     {
         #region Properties
         /// <summary>
@@ -37,15 +37,15 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Field constructor.
         /// </summary>
-        /// <param name="tvName">Name of TV.</param>
-        /// <param name="tvId">Product ID of TV.</param>
-        /// <param name="brand">Brand of TV.</param>
-        /// <param name="price">Price of TV.</param>
-        /// <param name="availability">Stock of specific TV.</param>
-        /// <param name="horizontalPixels">Horizontal resolution.</param>
-        /// <param name="verticalPixels">Vertical resolution.</param>
-        public TV(string tvName, int tvId, Brand brand, double price, int availability, int horizontalPixels, int verticalPixels) : base(tvName, tvId, brand, price, availability)
-        {
+        /// <param Name="tvName">Name of TV.</param>
+        /// <param Name="tvId">Product ID of TV.</param>
+        /// <param Name="brand">Brand of TV.</param>
+        /// <param Name="price">Price of TV.</param>
+        /// <param Name="availability">Stock of specific TV.</param>
+        /// <param Name="horizontalPixels">Horizontal resolution.</param>
+        /// <param Name="verticalPixels">Vertical resolution.</param>
+        public TV(int horizontalPixels, int verticalPixels)
+        { 
             HorizontalPixels = horizontalPixels;
             VerticalPixels = verticalPixels;
         }
@@ -53,8 +53,8 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Copy constructor.
         /// </summary>
-        /// <param name="instance">Instance of TV that is being copied.</param>
-        public TV(TV instance) : this(instance.Name, instance.ProductID, instance.ProductBrand, instance.Price, instance.Availability, instance.HorizontalPixels, instance.VerticalPixels)
+        /// <param Name="instance">Instance of TV that is being copied.</param>
+        public TV(TV instance) : this(instance.HorizontalPixels, instance.VerticalPixels)
         {
 
         }

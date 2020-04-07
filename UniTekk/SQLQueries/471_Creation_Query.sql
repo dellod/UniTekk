@@ -67,7 +67,7 @@ CREATE TABLE TV (
 CREATE TABLE Camera(
 	productID int NOT NULL,
 	Aperture varchar(255),
-	shutter_speed int NOT NULL,
+	shutter_speed  varchar(255) NOT NULL,
 	width varchar(255),
 	thickness varchar(255),
 	height varchar(255)
@@ -77,7 +77,7 @@ CREATE TABLE Camera(
 CREATE TABLE Laptop(
 	productID int NOT NULL,
 	RAM int,
-	clock_frequency int NOT NULL,
+	clock_frequency  varchar(255) NOT NULL,
 	width varchar(255),
 	thickness varchar(255),
 	height varchar(255)
