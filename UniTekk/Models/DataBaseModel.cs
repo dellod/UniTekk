@@ -233,6 +233,11 @@ namespace UniTekk.Models
         }
 
         //Actual data starts here, this one is returning login info
+
+       /**
+        * Sends password and username to database, will verify if these credentials exist
+        * Should get a 0,1 or 2 depending on how the credentials verify
+        */
         public int returnLoginInfo(string username, string password, string verifier)
         {
             SqlParameter[] Parameters = new SqlParameter[3];
@@ -243,7 +248,12 @@ namespace UniTekk.Models
             int returnVal = Execute_Non_Query_Store_Procedure("getUserInformation", Parameters, verifier);
             return returnVal;
         }
-
+        /**
+         * Inserts either a brand new tuple into the database if the criteria table doesn't contain username
+         * OR
+         * Updates the tuple already in the database with new price and address
+         * Returns a 1 if everything succeeds
+         */
         public int insertCriteriaInfo(string username, string address, int price)
         {
             int verifier = 0;
@@ -255,7 +265,11 @@ namespace UniTekk.Models
             int returnVal = Execute_Non_Query_Store_Procedure("sendCriteria", Parameters, "successValue");
             return returnVal;
         }
-
+        /**
+         * Inserts a brand new product into the database. This is made only by someone who is an Admin User
+         * The admin will put in all necessary credentials and the type of the product he is inserting.
+         * Depending on the type, it will be determined which of the attributes(a1-a5) are required and inserted.
+         */
         public int insertProductInfo(Product pro, String type, String a1,String a2, String a3,String a4,String a5)
         {
             int returnVal = 0;

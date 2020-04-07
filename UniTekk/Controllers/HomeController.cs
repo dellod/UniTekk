@@ -44,7 +44,12 @@ namespace UniTekk.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         #endregion
-
+        /**
+         * Input given by the user for password and username
+         * Returns a 1 if the credentials verify to admin
+         * Returns a 2 if the credentials verify to client
+         * Returns a 0 if credentials failed
+         */
         [HttpGet]
         [Route("GetLogin")]
         public ActionResult<IEnumerable<string>> GetValues([FromQuery] string username, [FromQuery] string password)
@@ -53,7 +58,11 @@ namespace UniTekk.Controllers
             int returnVal = db.returnLoginInfo(username, password, "returnVal");
             return new string[] { returnVal.ToString() };
         }
-
+        /**
+         * Input given by the user for price and address, client username should also be given by the frontend
+         * postCriteria will sned these to the db model
+         * it should return a 1 if everything was inserted successfully
+         */
         [HttpPost]
         [Route("PostCriteria")]
         public string[] postCriteria([FromQuery] string clientUsername, [FromQuery] string price, [FromQuery] string address)
@@ -63,7 +72,12 @@ namespace UniTekk.Controllers
             return new string[] { returnVal.ToString() };
         }
 
-
+        /**
+         * 
+         * A POST by an admin user, putting in all necessary information about the product and the product subtype(laptop,phone,etc.)
+         * Admin should also put in all information of the brand and their information
+         * It should recieve a 1 if everything completes successfully.
+         */
         [HttpPost]
         [Route("InsertPost")]
         public string[] insertPost([FromQuery] string username, [FromQuery] string sellerName , [FromQuery] string link, 
