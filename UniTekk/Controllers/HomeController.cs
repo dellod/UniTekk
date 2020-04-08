@@ -141,6 +141,19 @@ namespace UniTekk.Controllers
             int returnValue = db.deleteSeller(sellerId);
             return new string[] { returnValue.ToString() };
          }
+        
+        /**
+         * A PUT that will edit the details of a tuple associated with the productId in the Product or Sells table.
+         */
+        [HttpPut]
+        [Route("ChangeProductDetails")]
+        public string[] changeProductDetails([FromQuery] string type, [FromQuery] string username, [FromQuery] int productId, 
+                                             [FromQuery] string productName, [FromQuery] int price, [FromQuery] int availability)
+        {
+            DatabaseModel db = new DatbaseModel();
+            int returnValue = db.changeProductDetails(type, username, productId, productName, price, availability);
+            return new string[] { returnValue.ToString() };
+        }
 
         [HttpGet]
         [Route("BrowseProducts")]

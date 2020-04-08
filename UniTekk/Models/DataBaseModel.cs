@@ -355,7 +355,10 @@ namespace UniTekk.Models
             int returnVal = Execute_Non_Query_Store_Procedure("registerClient", Parameters, "returnValue");
             return returnVal;
         }
-
+        /**
+         * This method inserts a new seller into the database. Assuming admin is logged in, it will take all arguments and fill
+         * them in accordingly into the database. Will return 1 for a success, 0 otherwise.
+         */
         public int insertSeller(string username, string sellerName, string link, string productName, int availability, int price)
         {
             SqlParameter[] Parameters = new SqlParameter[7];
@@ -371,6 +374,10 @@ namespace UniTekk.Models
             return returnValue;
         }
 
+        /**
+         * This method will delete a seller from the database. Assuming admin is logged in, it will remove tuples associated with 
+         * the seller ID that is passed in as an argument. Will return 1 for a success, 0 otherwise.
+         */
         public int deleteSeller(int sellerId)
         {
             int returnValue = 0;
@@ -381,6 +388,23 @@ namespace UniTekk.Models
             return returnValue;
         }
 
+        /**
+         *  This method will change the details of a single product within the database (name, price, or availability). The values that
+         *  are not being changed will be passed as null in the function. Will return 1 for a success, 0 otherwise.
+         */
+        public int changeProductDetails(string type, string username, int productId, string productName, int price, int availability)
+        {
+            int returnValue = 0;
+            SqlParameter[] Parameters = new SqlParameter[7];
+            Parameters[0] = new SqlParameter("@returnValue", returnValue);
+            Parameters[1] = new SqlParameter("@type", type);
+            Parameters[2] = new SqlParameter("@username", username);
+            Parameters[3] = new SqlParameter("@productId", productId);
+            Parameters[4] = new SqlParameter("@productName", productName);
+            Parameters[5] = new SqlParameter("@price", price);
+            Parameters[6] = new SqlParameter("@availability", availability);
+            return returnValue;
+        }
         public DataTable browseProducts(string username, string password)
         {
             SqlParameter[] Parameters = new SqlParameter[2];
