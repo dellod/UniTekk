@@ -73,19 +73,21 @@ namespace UniTekk.Controllers
         }
 
         /**
-         * 
+         * Requires all necessary info of a product(type info like laptop RAM included) and the Id of the seller
+         * Also requires Sells table information
          * A POST by an admin user, putting in all necessary information about the product and the product subtype(laptop,phone,etc.)
          * It should recieve a 1 if everything completes successfully.
          */
         [HttpPost]
         [Route("InsertPost")]
-        public string[] insertPost([FromQuery] string username, [FromQuery] string sellerName , [FromQuery] string link, 
-                                   [FromQuery] int availability , [FromQuery] int price, [FromQuery] string productName,
-                                   [FromQuery] string type, [FromQuery] string attr1, [FromQuery] string attr2, 
-                                   [FromQuery] string attr3, [FromQuery] string attr4, [FromQuery] string attr5)
+        public string[] insertPost([FromQuery] string username, [FromQuery] int sellerId,[FromQuery] int availability ,
+                                   [FromQuery] int price, [FromQuery] string productName,  [FromQuery] string type, 
+                                   [FromQuery] string attr1, [FromQuery] string attr2,   [FromQuery] string attr3, 
+                                   [FromQuery] string attr4, [FromQuery] string attr5)
         {
             DatabaseModel db = new DatabaseModel();
-            Seller sell = new Seller(sellerName, link);
+            Seller sell = new Seller();
+            sell.SellerId = sellerId;
             Product pro = new Product(productName,price,availability,username,sell);
             int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
             return new string[] { returnVal.ToString() };

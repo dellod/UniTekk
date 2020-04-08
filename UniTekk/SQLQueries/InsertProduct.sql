@@ -1,8 +1,7 @@
 create procedure insertNewProduct(
 @returnVal as int OUTPUT,
 @username as varchar(50),
-@sellerName as varchar(50),
-@link as varchar(50),
+@sellerId as varchar(50),
 @availability as int,
 @price as int,
 @productName as varchar(50),
@@ -16,11 +15,9 @@ create procedure insertNewProduct(
 AS
 
 BEGIN
-	DECLARE @sellerId as int;
 	DECLARE @productId as int;
-	SELECT @sellerId = sellerID FROM Seller WHERE link = @link and NAME = @sellerName;
 	INSERT INTO Product(name,managing_admin_username) VALUES(@productName,@username);
-	SELECT @productId = productId from Product where name = @productName  and managing_admin_username = @username;
+	SELECT @productId = productId from Product where name = @productName and managing_admin_username = @username;
 	INSERT INTO Sells(sellerID,productID,availability,price) VALUES(@sellerId,@productId,@availability,@price);
 	IF @type = 'Laptop'
 	BEGIN
