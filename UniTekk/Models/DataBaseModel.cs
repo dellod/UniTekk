@@ -254,14 +254,15 @@ namespace UniTekk.Models
          * Updates the tuple already in the database with new price and address
          * Returns a 1 if everything succeeds
          */
-        public int insertCriteriaInfo(string username, string address, int price)
+        public int insertCriteriaInfo(string username, string address, int price, string type)
         {
             int verifier = 0;
-            SqlParameter[] Parameters = new SqlParameter[4];
+            SqlParameter[] Parameters = new SqlParameter[5];
             Parameters[0] = new SqlParameter("@successValue", verifier);
             Parameters[1] = new SqlParameter("@clientUsername", username);
             Parameters[2] = new SqlParameter("@price", price);
             Parameters[3] = new SqlParameter("@address", address);
+            Parameters[4] = new SqlParameter("@type", type);
             int returnVal = Execute_Non_Query_Store_Procedure("sendCriteria", Parameters, "successValue");
             return returnVal;
         }
@@ -379,6 +380,23 @@ namespace UniTekk.Models
             returnValue = Execute_Non_Query_Store_Procedure("deleteSeller", Parameters, "returnValue");
             return returnValue;
         }
+
+        public DataTable browseProducts(string username, string password)
+        {
+            SqlParameter[] Parameters = new SqlParameter[2];
+            Parameters[0] = new SqlParameter("@username", username);
+            Parameters[1] = new SqlParameter("@password", password);
+            DataTable table = Execute_Data_Query_Store_Procedure("browseProductsClient", Parameters);
+            return null;
+        }
+
+        public DataTable browseProducts()
+        {
+            SqlParameter[] Parameters = null;
+            DataTable table = Execute_Data_Query_Store_Procedure("browseProducts", Parameters);
+            return table;
+        }
+
         #endregion
     }
 }

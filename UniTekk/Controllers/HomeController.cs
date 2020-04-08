@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UniTekk.Models;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using UniTekk.Models.Products;
 
 namespace UniTekk.Controllers
@@ -65,10 +66,10 @@ namespace UniTekk.Controllers
          */
         [HttpPost]
         [Route("PostCriteria")]
-        public string[] postCriteria([FromQuery] string clientUsername, [FromQuery] string price, [FromQuery] string address)
+        public string[] postCriteria([FromQuery] string clientUsername, [FromQuery] string price, [FromQuery] string type, [FromQuery] string address)
         {
             DatabaseModel db = new DatabaseModel();
-            int returnVal = db.insertCriteriaInfo(clientUsername, address, Int32.Parse(price));
+            int returnVal = db.insertCriteriaInfo(clientUsername, address, Int32.Parse(price), type);
             return new string[] { returnVal.ToString() };
         }
 
@@ -133,7 +134,7 @@ namespace UniTekk.Controllers
          * A DELETE that will remove tuples associated with sellerId from Sellers and Sell table.
          */
          [HttpDelete]
-         [Route("DeleteSelelr")]
+         [Route("DeleteSeller")]
          public string[] deleteSeller([FromQuery] int sellerId)
          {
             DatabaseModel db = new DatabaseModel();
@@ -141,5 +142,21 @@ namespace UniTekk.Controllers
             return new string[] { returnValue.ToString() };
          }
 
+        [HttpGet]
+        [Route("BrowseProducts")]
+        public string browseProducts([FromQuery] string username, [FromQuery] string password)
+        {
+            DatabaseModel db = new DatabaseModel();
+            string returnVal = string.Empty;
+            if (username == null || password == null)
+            {
+                returnVal = JsonConvert.SerializeObject(db.browseProducts());
+            }
+            else
+            {
+                returnVal = JsonConvert.SerializeObject(db.browseProducts(username, password));
+            }
+            return returnVal;
+        }
     }
 }

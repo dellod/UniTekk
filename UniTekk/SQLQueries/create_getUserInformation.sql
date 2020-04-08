@@ -4,7 +4,6 @@ create procedure getUserInformation(
 @username as varchar(50)
 )
 AS
-
 BEGIN
 	SET NOCOUNT OFF;
 	IF EXISTS (SELECT * FROM Client WHERE Client.username = @username and Client.[password] = @password)

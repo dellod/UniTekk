@@ -31,7 +31,6 @@ CREATE TABLE Seller (
 CREATE TABLE Product (
 	productID int IDENTITY(1,1) PRIMARY KEY,
 	[name] varchar(255) NOT NULL,
-	brandID int NOT NULL,
 	[managing_admin_username] varchar(255) NOT NULL,
 	[browsing_client_username] varchar(255)
 	FOREIGN KEY ([browsing_client_username]) REFERENCES Client(username),
@@ -39,8 +38,8 @@ CREATE TABLE Product (
 );
 
 CREATE TABLE Criteria (
-	client_username varchar(255) NOT NULL,
-	product_type varchar(255) PRIMARY KEY,
+	client_username varchar(255) NOT NULL PRIMARY KEY,
+	product_type varchar(255) NOT NULL,
 	price int,
 	[address] varchar(255) NOT NULL,
 	FOREIGN KEY (client_username) REFERENCES Client(username)
@@ -76,7 +75,7 @@ CREATE TABLE Camera(
 
 CREATE TABLE Laptop(
 	productID int NOT NULL,
-	RAM int,
+	RAM varchar(255),
 	clock_frequency  varchar(255) NOT NULL,
 	width varchar(255),
 	thickness varchar(255),
