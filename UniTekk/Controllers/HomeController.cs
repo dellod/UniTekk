@@ -90,7 +90,20 @@ namespace UniTekk.Controllers
             Product pro = new Product(productName,price,availability,username,sell);
             int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
             return new string[] { returnVal.ToString() };
-            return new string[] { "" };
+        }
+
+        /**
+         * A DELETE that will remove all associated tuples that has the productId within it. 
+         * Deletes from the product table, its associated child table (Camera,Laptop,TV, etc.) and 
+         * the sells table
+         */
+        [HttpDelete]
+        [Route("DeletePost")]
+        public string[] deletePost([FromQuery] int productId)
+        {
+            DatabaseModel db = new DatabaseModel();
+            int returnVal = db.deleteProduct(productId);
+            return new string[] { returnVal.ToString() };
         }
 		
 		[HttpPost]

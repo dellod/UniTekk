@@ -331,8 +331,23 @@ namespace UniTekk.Models
 
             return returnVal;
         }
-		
-		public int registerClient(string username, string password, string address)
+        /**
+         * This method will delete a product from the database. It will get productID and use it to terminate all tuples with
+         * inputted productID in both the
+         * Product table and the sells table and associated child table (Laptop,Phone,Camera,TV)
+         */
+        public int deleteProduct(int productId)
+        {
+            int returnVal = 0;
+            SqlParameter[] Parameters = new SqlParameter[2];
+            Parameters[0] = new SqlParameter("@returnVal", returnVal);
+            Parameters[1] = new SqlParameter("@productId",productId);
+            returnVal = Execute_Non_Query_Store_Procedure("deleteProduct", Parameters, "returnVal");
+            return returnVal;
+        }
+
+
+        public int registerClient(string username, string password, string address)
         {
             SqlParameter[] Parameters = new SqlParameter[4];
             Parameters[0] = new SqlParameter("@returnValue", 1234);
