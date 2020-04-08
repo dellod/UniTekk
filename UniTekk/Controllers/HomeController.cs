@@ -150,7 +150,7 @@ namespace UniTekk.Controllers
         public string[] changeProductDetails([FromQuery] string type, [FromQuery] string username, [FromQuery] int productId, 
                                              [FromQuery] string productName, [FromQuery] int price, [FromQuery] int availability)
         {
-            DatabaseModel db = new DatbaseModel();
+            DatabaseModel db = new DatabaseModel();
             int returnValue = db.changeProductDetails(type, username, productId, productName, price, availability);
             return new string[] { returnValue.ToString() };
         }
