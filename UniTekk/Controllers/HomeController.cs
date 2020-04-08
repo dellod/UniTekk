@@ -116,6 +116,9 @@ namespace UniTekk.Controllers
             return new string[] { returnVal.ToString() };
         }
 
+        /*
+         * A POST by an admin user, putting all necessary information about a Seller into the database. Into Seller and Sells database.
+         */
         [HttpPost]
         [Route("InsertSeller")]
         public string[] insertSeller([FromQuery] string username, [FromQuery] string sellerName, [FromQuery] string link,
@@ -125,6 +128,18 @@ namespace UniTekk.Controllers
             int returnValue = db.insertSeller(username, sellerName, link, productName, availability, price);
             return new string[] { returnValue.ToString() };
         }
+
+        /*
+         * A DELETE that will remove tuples associated with sellerId from Sellers and Sell table.
+         */
+         [HttpDelete]
+         [Route("DeleteSelelr")]
+         public string[] deleteSeller([FromQuery] int sellerId)
+         {
+            DatabaseModel db = new DatabaseModel();
+            int returnValue = db.deleteSeller(sellerId);
+            return new string[] { returnValue.ToString() };
+         }
 
     }
 }
