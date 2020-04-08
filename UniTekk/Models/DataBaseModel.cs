@@ -331,6 +331,17 @@ namespace UniTekk.Models
 
             return returnVal;
         }
+		
+		public int registerClient(string username, string password, string address)
+        {
+            SqlParameter[] Parameters = new SqlParameter[4];
+            Parameters[0] = new SqlParameter("@returnValue", 1234);
+            Parameters[1] = new SqlParameter("@username", username);
+            Parameters[2] = new SqlParameter("@password", password);
+            Parameters[3] = new SqlParameter("@address", address);
+            int returnVal = Execute_Non_Query_Store_Procedure("registerClient", Parameters, "returnValue");
+            return returnVal;
+        }
 
         #endregion
     }

@@ -91,5 +91,14 @@ namespace UniTekk.Controllers
             int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
             return new string[] { returnVal.ToString() };
         }
+		
+		[HttpPost]
+        [Route("RegisterClient")]
+        public string[] registerClient([FromQuery] string username, [FromQuery] string password, [FromQuery] string address)
+        {
+            DatabaseModel db = new DatabaseModel();
+            int returnVal = db.registerClient(username, password, address);
+            return new string[] { returnVal.ToString() };
+        }
     }
 }
