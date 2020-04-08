@@ -343,6 +343,20 @@ namespace UniTekk.Models
             return returnVal;
         }
 
+        public int insertSeller(string username, string sellerName, string link, string productName, int availability, int price)
+        {
+            SqlParameter[] Parameters = new SqlParameter[7];
+            int returnValue = 0;
+            Parameters[0] = new SqlParameter("@returnValue", returnValue);
+            Parameters[1] = new SqlParameter("@username", username);
+            Parameters[2] = new SqlParameter("@sellerName", sellerName);
+            Parameters[3] = new SqlParameter("@link", link);
+            Parameters[4] = new SqlParameter("@productName", productName);
+            Parameters[5] = new SqlParameter("@availability", availability);
+            Parameters[6] = new SqlParameter("@price", price);
+            int returnVal = Execute_Non_Query_Store_Procedure("insertSeller", Parameters, "returnValue");
+            return returnValue;
+        }
         #endregion
     }
 }
