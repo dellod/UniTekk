@@ -19,8 +19,8 @@ BEGIN
 	DECLARE @sellerId as int;
 	DECLARE @productId as int;
 	SELECT @sellerId = sellerID FROM Seller WHERE link = @link and NAME = @sellerName;
-	INSERT INTO Product(name,brandID,managing_admin_username) VALUES(@productName,@sellerId,@username);
-	SELECT @productId = productId from Product where name = @productName and brandID = @sellerId and managing_admin_username = @username;
+	INSERT INTO Product(name,managing_admin_username) VALUES(@productName,@username);
+	SELECT @productId = productId from Product where name = @productName  and managing_admin_username = @username;
 	INSERT INTO Sells(sellerID,productID,availability,price) VALUES(@sellerId,@productId,@availability,@price);
 	IF @type = 'Laptop'
 	BEGIN

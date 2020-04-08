@@ -278,8 +278,8 @@ namespace UniTekk.Models
                 SqlParameter[] Parameters = new SqlParameter[13];
                 Parameters[0] = new SqlParameter("@returnVal", returnVal);
                 Parameters[1] = new SqlParameter("@username", pro.username);
-                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
-                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.Name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.Link);
                 Parameters[4] = new SqlParameter("@availability", pro.availability);
                 Parameters[5] = new SqlParameter("@price", pro.price);
                 Parameters[6] = new SqlParameter("@productName", pro.Name);
@@ -296,8 +296,8 @@ namespace UniTekk.Models
                 SqlParameter[] Parameters = new SqlParameter[13];
                 Parameters[0] = new SqlParameter("@returnVal", returnVal);
                 Parameters[1] = new SqlParameter("@username", pro.username);
-                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
-                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.Name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.Link);
                 Parameters[4] = new SqlParameter("@availability", pro.availability);
                 Parameters[5] = new SqlParameter("@price", pro.price);
                 Parameters[6] = new SqlParameter("@productName", pro.Name);
@@ -314,8 +314,8 @@ namespace UniTekk.Models
                 SqlParameter[] Parameters = new SqlParameter[13];
                 Parameters[0] = new SqlParameter("@returnVal", returnVal);
                 Parameters[1] = new SqlParameter("@username", pro.username);
-                Parameters[2] = new SqlParameter("@sellerName", pro.seller.name);
-                Parameters[3] = new SqlParameter("@link", pro.seller.link);
+                Parameters[2] = new SqlParameter("@sellerName", pro.seller.Name);
+                Parameters[3] = new SqlParameter("@link", pro.seller.Link);
                 Parameters[4] = new SqlParameter("@availability", pro.availability);
                 Parameters[5] = new SqlParameter("@price", pro.price);
                 Parameters[6] = new SqlParameter("@productName", pro.Name);
