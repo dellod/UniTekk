@@ -75,7 +75,6 @@ namespace UniTekk.Controllers
         /**
          * 
          * A POST by an admin user, putting in all necessary information about the product and the product subtype(laptop,phone,etc.)
-         * Admin should also put in all information of the brand and their information
          * It should recieve a 1 if everything completes successfully.
          */
         [HttpPost]
