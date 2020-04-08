@@ -18,7 +18,6 @@ AS
 BEGIN
 	DECLARE @sellerId as int;
 	DECLARE @productId as int;
-	INSERT INTO Seller(link,name) VALUES(@link,@sellerName);
 	SELECT @sellerId = sellerID FROM Seller WHERE link = @link and NAME = @sellerName;
 	INSERT INTO Product(name,brandID,managing_admin_username) VALUES(@productName,@sellerId,@username);
 	SELECT @productId = productId from Product where name = @productName and brandID = @sellerId and managing_admin_username = @username;

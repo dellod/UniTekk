@@ -7,7 +7,7 @@ CREATE PROCEDURE sendCriteria (
 )
 AS
 BEGIN
-	if NOT EXISTS (select * from CRITERIA where client_username = @clientUsername)
+	if EXISTS (select * from CRITERIA where client_username = @clientUsername)
 		UPDATE Criteria
 		SET price = @price, [address] = @address
 		Where client_username = @clientUsername

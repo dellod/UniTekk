@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UniTekk.Models.Products
 {
-    public class Brand
+    public class Seller
     {
         #region Properties
         /// <summary>
@@ -28,7 +28,7 @@ namespace UniTekk.Models.Products
         /// <summary>
         /// Default constructor (nescessary for deserialization).
         /// </summary>
-        public Brand()
+        public Seller()
         {
 
         }
@@ -38,7 +38,7 @@ namespace UniTekk.Models.Products
         /// </summary>
         /// <param Name="name">Name of brand.</param>
         /// <param Name="brandid">ID of brand.</param>
-        public Brand(string name, string lin)
+        public Seller(string name, string lin)
         {
             this.name = name;
             this.link = lin;
@@ -48,7 +48,7 @@ namespace UniTekk.Models.Products
         /// Copy constructor.
         /// </summary>
         /// <param Name="instance">Instance of brand that is being copied.</param>
-        public Brand(Brand instance) : this(instance.name, instance.link)
+        public Seller(Seller instance) : this(instance.name, instance.link)
         {
 
         }

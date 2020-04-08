@@ -65,6 +65,13 @@ namespace UniTekk.Models
             SellerId = sellerId;
             Products = products;
         }
+        
+        public Seller(string name, string link, List<Product> products)
+        {
+            Name = name;
+            Link = link;
+            Products = products;
+        }
 
         /// <summary>
         /// Copy constructor.

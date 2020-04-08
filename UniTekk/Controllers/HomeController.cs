@@ -86,10 +86,11 @@ namespace UniTekk.Controllers
                                    [FromQuery] string attr3, [FromQuery] string attr4, [FromQuery] string attr5)
         {
             DatabaseModel db = new DatabaseModel();
-            Brand brand = new Brand(sellerName, link);
-            Product pro = new Product(productName,price,availability,username,brand);
-            int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
-            return new string[] { returnVal.ToString() };
+            //Models.Seller sell = new Models.Products.Seller(sellerName, link);
+            //Product pro = new Product(productName,price,availability,username,brand);
+            //int returnVal = db.insertProductInfo(pro,type,attr1,attr2,attr3,attr4,attr5);
+            //return new string[] { returnVal.ToString() };
+            return new string[] { "" };
         }
 		
 		[HttpPost]

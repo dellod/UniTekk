@@ -26,7 +26,7 @@
             get; set;
         }
 
-        public Brand seller
+        public Seller seller
         {
             get; set;
         }
@@ -45,7 +45,7 @@
         /// <param Name="productBrand">Brand of product.</param>
         /// <param Name="price">Price of product.</param>
         /// <param Name="availability">Stock of product.</param>
-        public Product(string name, int price, int availability,string manage_username,Brand sell)
+        public Product(string name, int price, int availability,string manage_username,Seller sell)
         {
             this.Name = name;
             this.price = price;
