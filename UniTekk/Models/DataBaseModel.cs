@@ -372,6 +372,16 @@ namespace UniTekk.Models
             int returnVal = Execute_Non_Query_Store_Procedure("insertSeller", Parameters, "returnValue");
             return returnValue;
         }
+
+        public int deleteSeller(int sellerId)
+        {
+            int returnValue = 0;
+            SqlParameter[] Parameters = new SqlParameter[2];
+            Parameters[0] = new SqlParameter("@returnValue", returnValue);
+            Parameters[1] = new SqlParameter("@sellerId", sellerId);
+            returnValue = Execute_Non_Query_Store_Procedure("deleteSeller", Parameters, "returnValue");
+            return returnValue;
+        }
         #endregion
     }
 }
