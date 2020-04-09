@@ -7,8 +7,7 @@ CREATE PROCEDURE sendCriteria (
 )
 AS
 BEGIN
-	SET NOCOUNT OFF
-	IF EXISTS (select * from CRITERIA where client_username = @clientUsername)
+	IF EXISTS (SELECT * FROM Criteria WHERE client_username = @clientUsername)
 	BEGIN
 		UPDATE Criteria
 		SET price = @price, [address] = @address, [product_type] = @type
@@ -16,7 +15,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO Criteria(client_username, product_type,price,[address])
+		INSERT INTO Criteria (client_username, product_type,price,[address])
 		VALUES(@clientUsername,@type,@price,@address);
 	END
 	SET @successValue = 1
