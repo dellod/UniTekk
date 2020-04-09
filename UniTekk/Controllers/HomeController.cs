@@ -157,17 +157,17 @@ namespace UniTekk.Controllers
 
         [HttpGet]
         [Route("BrowseProducts")]
-        public string browseProducts([FromQuery] string username, [FromQuery] string password)
+        public string browseProducts([FromQuery] string username)
         {
             DatabaseModel db = new DatabaseModel();
             string returnVal = string.Empty;
-            if (username == null || password == null)
+            if (username == null)
             {
                 returnVal = JsonConvert.SerializeObject(db.browseProducts());
             }
             else
             {
-                returnVal = JsonConvert.SerializeObject(db.browseProducts(username, password));
+                returnVal = JsonConvert.SerializeObject(db.browseProducts(username));
             }
             return returnVal;
         }

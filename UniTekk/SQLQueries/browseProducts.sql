@@ -1,7 +1,7 @@
 create procedure browseProducts
 AS
 BEGIN
-	SELECT pOne.[name], Sells.price, Seller.[name],
+	SELECT pOne.[name] as product_name, Sells.price, Seller.[name] as seller_name,
 	CASE
 		WHEN EXISTS (SELECT * FROM Camera where pOne.productID = Camera.productID) THEN 'Camera'
 		WHEN EXISTS (SELECT * FROM Laptop where pOne.productID = Laptop.productID) THEN 'Laptop'

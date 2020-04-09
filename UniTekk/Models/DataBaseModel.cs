@@ -60,6 +60,7 @@ namespace UniTekk.Models
             catch (Exception ex)
             {
                 string s = ex.Message;
+                return -1;
             }
 
             if (sqlCommand.Connection != null && sqlCommand.Connection.State == ConnectionState.Open)
@@ -118,14 +119,19 @@ namespace UniTekk.Models
 
             try
             {
-                sqlAdapter.SelectCommand.Parameters.AddRange(parameters);
+                if(parameters != null)
+                {
+                    sqlAdapter.SelectCommand.Parameters.AddRange(parameters);
+                }
                 sqlAdapter.SelectCommand.Connection.Open();
                 sqlAdapter.Fill(dataTable);
             }
             catch (Exception er)
             {
                 string ee = er.ToString();
-                dataTable = null;
+                dataTable = new DataTable();
+                dataTable.Columns.Add("Error Message", typeof(string));
+                dataTable.Rows.Add(ee);
             }
 
             if (sqlAdapter.SelectCommand.Connection != null && sqlAdapter.SelectCommand.Connection.State == ConnectionState.Open)
@@ -405,13 +411,12 @@ namespace UniTekk.Models
             Parameters[6] = new SqlParameter("@availability", availability);
             return returnValue;
         }
-        public DataTable browseProducts(string username, string password)
+        public DataTable browseProducts(string username)
         {
-            SqlParameter[] Parameters = new SqlParameter[2];
+            SqlParameter[] Parameters = new SqlParameter[1];
             Parameters[0] = new SqlParameter("@username", username);
-            Parameters[1] = new SqlParameter("@password", password);
             DataTable table = Execute_Data_Query_Store_Procedure("browseProductsClient", Parameters);
-            return null;
+            return table;
         }
 
         public DataTable browseProducts()

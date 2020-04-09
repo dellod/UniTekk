@@ -1,21 +1,24 @@
-
 CREATE PROCEDURE sendCriteria (
-@successValue int,
-@clientUsername varchar(255),
-@price int,
-@address varchar(255),
-@type varchar(255)
+@successValue as int OUTPUT,
+@clientUsername as varchar(255),
+@price as int,
+@address as varchar(255),
+@type as varchar(255)
 )
 AS
 BEGIN
-	if EXISTS (select * from CRITERIA where client_username = @clientUsername)
+	SET NOCOUNT OFF
+	IF EXISTS (select * from CRITERIA where client_username = @clientUsername)
+	BEGIN
 		UPDATE Criteria
-		SET price = @price, [address] = @address, product_type = @type
-		Where client_username = @clientUsername
+		SET price = @price, [address] = @address, [product_type] = @type
+		Where client_username = @clientUsername;
+	END
 	ELSE
+	BEGIN
 		INSERT INTO Criteria(client_username, product_type,price,[address])
-		VALUES(@clientUsername,@type,@price,@address)
+		VALUES(@clientUsername,@type,@price,@address);
+	END
 	SET @successValue = 1
 	RETURN @successValue
-END
-GO
+END;
