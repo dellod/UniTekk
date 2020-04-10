@@ -409,8 +409,23 @@ namespace UniTekk.Models
             Parameters[4] = new SqlParameter("@productName", productName);
             Parameters[5] = new SqlParameter("@price", price);
             Parameters[6] = new SqlParameter("@availability", availability);
+            returnValue = Execute_Non_Query_Store_Procedure("changeProductDetails", Parameters, "returnValue");
             return returnValue;
         }
+
+        /**
+         * This method will compare the products of the same type within the database. Will return the table of products matching names provided.
+         */
+        public DataTable compareProducts(string username, string type, string productName1, string productName2)
+        {
+            SqlParameter[] Parameters = new SqlParameter[4];
+            Parameters[0] = new SqlParameter("@username", username);
+            Parameters[1] = new SqlParameter("@type", type);
+            Parameters[2] = new SqlParameter("@productName1", productName1);
+            Parameters[3] = new SqlParameter("@productName2", productName2);
+            DataTable table = Execute_Data_Query_Store_Procedure("compareProducts", Parameters);
+        }
+
         public DataTable browseProducts(string username)
         {
             SqlParameter[] Parameters = new SqlParameter[1];

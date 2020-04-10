@@ -155,6 +155,18 @@ namespace UniTekk.Controllers
             return new string[] { returnValue.ToString() };
         }
 
+        /**
+         * A get that will compare products of the same type (ie. Camera, Phone, TV, or Laptop).
+         */
+        [HttpGet]
+        [Route("CompareProducts")]
+        public string[] compareProducts([FromQuery] string username, [FromQuery] string type, [FromQuery] string productName1, [FromQuery] string productName2)
+        {
+            DatabaseModel db = new DatabaseModel();
+            int returnValue = db.compareProducts(username, type, productName1, productName2);
+            return new string[] { returnValue.ToString() };
+        }
+
         [HttpGet]
         [Route("BrowseProducts")]
         public string browseProducts([FromQuery] string username)
