@@ -160,11 +160,11 @@ namespace UniTekk.Controllers
          */
         [HttpGet]
         [Route("CompareProducts")]
-        public string[] compareProducts([FromQuery] string username, [FromQuery] string type, [FromQuery] string productName1, [FromQuery] string productName2)
+        public string compareProducts([FromQuery] string username, [FromQuery] string type, [FromQuery] string productName1, [FromQuery] string productName2)
         {
             DatabaseModel db = new DatabaseModel();
-            int returnValue = db.compareProducts(username, type, productName1, productName2);
-            return new string[] { returnValue.ToString() };
+            string returnValue = JsonConvert.SerializeObject(db.compareProducts(username, type, productName1, productName2));
+            return returnValue;
         }
 
         [HttpGet]

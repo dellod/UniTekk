@@ -424,6 +424,7 @@ namespace UniTekk.Models
             Parameters[2] = new SqlParameter("@productName1", productName1);
             Parameters[3] = new SqlParameter("@productName2", productName2);
             DataTable table = Execute_Data_Query_Store_Procedure("compareProducts", Parameters);
+            return table;
         }
 
         public DataTable browseProducts(string username)

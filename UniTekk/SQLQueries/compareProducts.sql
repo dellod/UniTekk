@@ -28,7 +28,7 @@ BEGIN
 	END
 	ELSE IF @type = 'TV'
 	BEGIN
-		SELECT Product.[name], Sells.availability, Sells.price, TV.resolution, TV.width, TV.thickness, Camera.height
+		SELECT Product.[name], Sells.availability, Sells.price, TV.resolution, TV.width, TV.thickness
 		FROM Product, TV, Sells
 		WHERE Product.productID = TV.productID AND Product.productID = Sells.productID AND (Product.[name] = @productName1 OR Product.[name] = @productName2)
 	END
