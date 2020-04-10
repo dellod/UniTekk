@@ -364,6 +364,14 @@ namespace UniTekk.Models
         /**
          * This method inserts a new seller into the database. Assuming admin is logged in, it will take all arguments and fill
          * them in accordingly into the database. Will return 1 for a success, 0 otherwise.
+         * 
+         *  @returnValue as int OUTPUT,
+            @username as varchar(50),
+            @sellerName as varchar(50),
+            @link as varchar(50),
+            @productName as varchar(50),
+            @availability as int,
+            @price as int
          */
         public int insertSeller(string username, string sellerName, string link, string productName, int availability, int price)
         {
@@ -376,7 +384,7 @@ namespace UniTekk.Models
             Parameters[4] = new SqlParameter("@productName", productName);
             Parameters[5] = new SqlParameter("@availability", availability);
             Parameters[6] = new SqlParameter("@price", price);
-            int returnVal = Execute_Non_Query_Store_Procedure("insertSeller", Parameters, "returnValue");
+            returnValue = Execute_Non_Query_Store_Procedure("insertSeller", Parameters, "returnValue");
             return returnValue;
         }
 
