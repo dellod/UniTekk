@@ -1,7 +1,7 @@
 CREATE PROCEDURE registerClient (
 @returnValue as int OUTPUT,
 @username as varchar(255),
-@password as int,
+@password as varchar(255),
 @address as varchar(255)
 )
 AS
